@@ -56,7 +56,7 @@
         </div>
         <div class="entry">
           <label>To:</label>&nbsp;
-          <input type="text" name="to_value" value="<?php echo $to_value; ?>" />&nbsp;
+          <input type="text" name="to_value" value="<?php echo float_to_string($to_value); ?>" />&nbsp;
           <select name="to_unit">
               <?php
               foreach ($length_options as $unit) {

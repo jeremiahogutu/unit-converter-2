@@ -53,6 +53,18 @@ function optionize ($string) {
     return str_replace(' ','_', strtolower($string));
 }
 
+// The function float_to_string formats a float into a string
+// while also avoiding default use of scientific notation.
+// Rounds to $precision and trims extra trailing zeros.
+function float_to_string ($float, $precision=20) {
+    // Typecast to insure value is a float
+    $float = (float) $float;
+    $string = number_format($float, $precision, '.', '');
+    $string = rtrim($string, '0');
+    $string = rtrim($string, '.');
+    return $string;
+}
+
 // Length
 function convert_to_meters ($value, $from_unit) {
 
@@ -128,7 +140,6 @@ function convert_to_kilograms($value, $from_unit){
         return "Unsupported unit.";
     }
 }
-
 function convert_from_kilograms ($value, $to_unit) {
     if (array_key_exists($to_unit, MASS_TO_KILOGRAM)){
         return $value / MASS_TO_KILOGRAM[$to_unit];
@@ -136,7 +147,6 @@ function convert_from_kilograms ($value, $to_unit) {
         return "Unsupported unit.";
     }
 }
-
 function convert_mass ($value, $from_unit, $to_unit) {
     $kilograms_value = convert_to_kilograms($value, $from_unit);
     $new_value = convert_from_kilograms($kilograms_value, $to_unit);

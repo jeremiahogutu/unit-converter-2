@@ -36,7 +36,7 @@ function convert_length ($value, $from_unit, $to_unit) {
     return $new_value;
 }
 
-//Area
+// Area
 function convert_to_square_meters ($value, $from_unit) {
     $from_unit = str_replace('square_','',$from_unit);
     if (array_key_exists($from_unit, LENGTH_TO_METER)){
@@ -57,4 +57,9 @@ function convert_area ($value, $from_unit, $to_unit) {
     $meter_value = convert_to_square_meters($value, $from_unit);
     $new_value = convert_from_square_meters($meter_value, $to_unit);
     return $new_value;
+}
+
+// Volume
+function convert_volume ($value, $from_unit, $to_unit) {
+    
 }

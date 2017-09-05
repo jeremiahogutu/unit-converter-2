@@ -13,6 +13,19 @@
 
         $to_value = convert_area($from_value, $from_unit, $to_unit);
     }
+
+    $area_options = array(
+            'Square inches',
+            'Square feet',
+            'Square yards',
+            'Square miles',
+            'Square millimeters',
+            'Square centimeters',
+            'Square meters',
+            'Square kilometers',
+            'Acres',
+            'Hectares'
+    );
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,33 +46,28 @@
           <label>From:</label>&nbsp;
           <input type="text" name="from_value" value="<?php echo $from_value; ?>" />&nbsp;
           <select name="from_unit">
-              <option value="square_inches"<?php if ($from_unit == 'inches') { echo " selected"; }?>>square inches</option>
-              <option value="square_feet"<?php if ($from_unit == 'feet') {echo " selected"; }?>>square feet</option>
-              <option value="square_yards"<?php if ($from_unit == 'yards') {echo " selected"; }?>>square yards</option>
-              <option value="square_miles"<?php if ($from_unit == 'miles') {echo " selected"; }?>> square miles</option>
-              <option value="square_millimeters"<?php if ($from_unit == 'millimeters') {echo " selected"; }?>>square millimeters</option>
-              <option value="square_centimeters"<?php if ($from_unit == 'centimeters') {echo " selected"; }?>>square centimeters</option>
-              <option value="square_meters"<?php if ($from_unit == 'meters') {echo " selected"; }?>>square meters</option>
-              <option value="square_kilometers"<?php if ($from_unit == 'kilometers') {echo " selected"; }?>>square kilometers</option>
-              <option value="acres"<?php if ($from_unit == 'acres') {echo " selected"; }?>>acres</option>
-              <option value="hectares"<?php if ($from_unit == 'hectares') {echo " selected"; }?>>hectares</option>
+              <?php
+              foreach ($area_options as $unit) {
+                  $opt = optionize($unit);
+                  echo "<option value=\"{$opt}\"";
+                  if ($from_unit == $opt) { echo " selected"; }
+                  echo ">{$unit}</option>";
+              }
+              ?>
           </select>
         </div>
-        
         <div class="entry">
           <label>To:</label>&nbsp;
           <input type="text" name="to_value" value="<?php echo $to_value; ?>" />&nbsp;
           <select name="to_unit">
-              <option value="square_inches"<?php if ($to_unit == 'inches') { echo " selected"; }?>>square inches</option>
-              <option value="square_feet"<?php if ($to_unit == 'feet') {echo " selected"; }?>>square feet</option>
-              <option value="square_yards"<?php if ($to_unit == 'yards') {echo " selected"; }?>>square yards</option>
-              <option value="square_miles"<?php if ($to_unit == 'miles') {echo " selected"; }?>>square miles</option>
-              <option value="square_millimeters"<?php if ($to_unit == 'millimeters') {echo " selected"; }?>>square millimeters</option>
-              <option value="square_centimeters"<?php if ($to_unit == 'centimeters') {echo " selected"; }?>>square centimeters</option>
-              <option value="square_meters"<?php if ($to_unit == 'meters') {echo " selected"; }?>>square meters</option>
-              <option value="square_kilometers"<?php if ($to_unit == 'kilometers') {echo " selected"; }?>>square kilometers</option>
-              <option value="acres"<?php if ($to_unit == 'acres') {echo " selected"; }?>>acres</option>
-              <option value="hectares"<?php if ($to_unit == 'hectares') {echo " selected"; }?>>hectares</option>
+              <?php
+              foreach ($area_options as $unit) {
+                  $opt = optionize($unit);
+                  echo "<option value=\"{$opt}\"";
+                  if ($to_unit == $opt) { echo " selected"; }
+                  echo ">{$unit}</option>";
+              }
+              ?>
           </select>
           
         </div>

@@ -1,67 +1,79 @@
 <?php
-    function convert_to_meters ($value, $from_unit) {
+    function convert_to_square_meters ($value, $from_unit) {
         switch ($from_unit){
-            case 'inches':
-                return $value * 0.0254;
+            case 'square_inches':
+                return $value * pow(0.0254,2);
                 break;
-            case 'feet':
-                return $value * 0.3048;
+            case 'square_feet':
+                return $value * pow(0.3048,2);
                 break;
-            case 'yards':
-                return $value * 0.9144;
+            case 'square_yards':
+                return $value * pow(0.9144,2);
                 break;
-            case 'miles':
-                return $value * 1609.344;
+            case 'square_miles':
+                return $value * pow(1609.344,2);
                 break;
-            case 'millimeters':
-                return $value * 0.001;
+            case 'square_millimeters':
+                return $value * pow(0.001,2);
                 break;
-            case 'centimeters':
-                return $value * 0.01;
+            case 'square_centimeters':
+                return $value * pow(0.01,2);
                 break;
-            case 'meters':
+            case 'square_meters':
                 return $value;
                 break;
-            case 'kilometers':
-                return $value * 1000;
+            case 'square_kilometers':
+                return $value * pow(1000,2);
+                break;
+            case 'acres':
+                return $value * 4046.8564244;
+                break;
+            case 'hectares':
+                return $value * 10000;
                 break;
             default:
                 return "Unsupported unit.";
         }
     }
-    function convert_from_meters ($value, $to_unit) {
+    function convert_from_square_meters ($value, $to_unit) {
         switch ($to_unit){
-            case 'inches':
-                return $value / 0.0254;
+            case 'square_inches':
+                return $value / pow(0.0254,2);
                 break;
-            case 'feet':
-                return $value / 0.3048;
+            case 'square_feet':
+                return $value / pow(0.3048,2);
                 break;
-            case 'yards':
-                return $value / 0.9144;
+            case 'square_yards':
+                return $value / pow(0.9144,2);
                 break;
-            case 'miles':
-                return $value / 1609.344;
+            case 'square_miles':
+                return $value / pow(1609.344, 2);
                 break;
-            case 'millimeters':
-                return $value / 0.001;
+            case 'square_millimeters':
+                return $value / pow(0.001, 2);
                 break;
-            case 'centimeters':
-                return $value / 0.01;
+            case 'square_centimeters':
+                return $value / pow(0.01, 2);
                 break;
-            case 'meters':
+            case 'square_meters':
                 return $value;
                 break;
-            case 'kilometers':
-                return $value / 1000;
+            case 'square_kilometers':
+                return $value / pow(1000, 2);
+                break;
+            case 'acres':
+                return $value / 4046.8564244;
+                break;
+            case 'hectares':
+                return $value / 10000;
                 break;
             default:
                 return "Unsupported unit.";
         }
     }
-    function convert_length ($value, $from_unit, $to_unit) {
-        $meter_value = convert_to_meters($value, $from_unit);
-        $new_value = convert_from_meters($meter_value, $to_unit);
+    function convert_area ($value, $from_unit, $to_unit) {
+        $meter_value = convert_to_square_meters($value, $from_unit);
+        $new_value = convert_from_square_meters($meter_value, $to_unit);
         return $new_value;
     }
 
@@ -75,7 +87,7 @@
         $from_unit = $_POST['from_unit'];
         $to_unit = $_POST['to_unit'];
 
-        $to_value = convert_length($from_value, $from_unit, $to_unit);
+        $to_value = convert_area($from_value, $from_unit, $to_unit);
     }
 ?>
 <!DOCTYPE html>
@@ -105,6 +117,8 @@
               <option value="square_centimeters"<?php if ($from_unit == 'centimeters') {echo " selected"; }?>>square centimeters</option>
               <option value="square_meters"<?php if ($from_unit == 'meters') {echo " selected"; }?>>square meters</option>
               <option value="square_kilometers"<?php if ($from_unit == 'kilometers') {echo " selected"; }?>>square kilometers</option>
+              <option value="acres"<?php if ($from_unit == 'acres') {echo " selected"; }?>>acres</option>
+              <option value="hectares"<?php if ($from_unit == 'hectares') {echo " selected"; }?>>hectares</option>
           </select>
         </div>
         
@@ -115,11 +129,13 @@
               <option value="square_inches"<?php if ($to_unit == 'inches') { echo " selected"; }?>>square inches</option>
               <option value="square_feet"<?php if ($to_unit == 'feet') {echo " selected"; }?>>square feet</option>
               <option value="square_yards"<?php if ($to_unit == 'yards') {echo " selected"; }?>>square yards</option>
-              <option value="sqaure_miles"<?php if ($to_unit == 'miles') {echo " selected"; }?>>sqaure miles</option>
-              <option value="square_millimeters"<?php if ($to_unit == 'millimeters') {echo " selected"; }?>>sqaure millimeters</option>
+              <option value="square_miles"<?php if ($to_unit == 'miles') {echo " selected"; }?>>square miles</option>
+              <option value="square_millimeters"<?php if ($to_unit == 'millimeters') {echo " selected"; }?>>square millimeters</option>
               <option value="square_centimeters"<?php if ($to_unit == 'centimeters') {echo " selected"; }?>>square centimeters</option>
-              <option value="sqaure_meters"<?php if ($to_unit == 'meters') {echo " selected"; }?>>square meters</option>
-              <option value="sqaure_kilometers"<?php if ($to_unit == 'kilometers') {echo " selected"; }?>>sqaure kilometers</option>
+              <option value="square_meters"<?php if ($to_unit == 'meters') {echo " selected"; }?>>square meters</option>
+              <option value="square_kilometers"<?php if ($to_unit == 'kilometers') {echo " selected"; }?>>square kilometers</option>
+              <option value="acres"<?php if ($to_unit == 'acres') {echo " selected"; }?>>acres</option>
+              <option value="hectares"<?php if ($to_unit == 'hectares') {echo " selected"; }?>>hectares</option>
           </select>
           
         </div>

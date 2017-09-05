@@ -37,6 +37,18 @@ const VOLUME_TO_LITER = array(
     "milliliters" => 0.001,
 );
 
+const MASS_TO_KILOGRAM = array(
+    "ounces" =>	0.0283495,
+    "pounds" =>	0.453592,
+    "stones" =>	6.35029,
+    "long_tons" =>	1016.05,
+    "short_tons" =>	907.185,
+    "milligrams" =>	0.000001,
+    "grams" =>	0.001,
+    "kilograms" =>	1,
+    "metric_tonnes" =>	1000
+);
+
 function optionize ($string) {
     return str_replace(' ','_', strtolower($string));
 }
@@ -89,7 +101,6 @@ function convert_area ($value, $from_unit, $to_unit) {
 
 // Volume
 function convert_to_liters ($value, $from_unit) {
-    $from_unit = str_replace('square_','',$from_unit);
     if (array_key_exists($from_unit, VOLUME_TO_LITER)){
         return $value * VOLUME_TO_LITER[$from_unit];
     } else {
@@ -97,7 +108,6 @@ function convert_to_liters ($value, $from_unit) {
     }
 }
 function convert_from_liters ($value, $to_unit) {
-    $to_unit = str_replace('square_','',$to_unit);
     if (array_key_exists($to_unit, VOLUME_TO_LITER)){
         return $value / VOLUME_TO_LITER[$to_unit];
     } else {
@@ -107,5 +117,28 @@ function convert_from_liters ($value, $to_unit) {
 function convert_volume ($value, $from_unit, $to_unit) {
     $liter_value = convert_to_liters($value, $from_unit);
     $new_value = convert_from_liters($liter_value, $to_unit);
+    return $new_value;
+}
+
+// Mass
+function convert_to_kilograms($value, $from_unit){
+    if (array_key_exists($from_unit, MASS_TO_KILOGRAM)){
+        return $value * MASS_TO_KILOGRAM[$from_unit];
+    } else {
+        return "Unsupported unit.";
+    }
+}
+
+function convert_from_kilograms ($value, $to_unit) {
+    if (array_key_exists($to_unit, MASS_TO_KILOGRAM)){
+        return $value / MASS_TO_KILOGRAM[$to_unit];
+    } else {
+        return "Unsupported unit.";
+    }
+}
+
+function convert_mass ($value, $from_unit, $to_unit) {
+    $kilograms_value = convert_to_kilograms($value, $from_unit);
+    $new_value = convert_from_kilograms($kilograms_value, $to_unit);
     return $new_value;
 }

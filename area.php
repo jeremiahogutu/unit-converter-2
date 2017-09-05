@@ -49,8 +49,8 @@
               <?php
               foreach ($area_options as $unit) {
                   $opt = optionize($unit);
-                  echo "<option value=\"{$opt}\"";
-                  if ($from_unit == $opt) { echo " selected"; }
+                  echo "<option value=\"{$unit}\"";
+                  if ($from_unit == $unit) { echo " selected"; }
                   echo ">{$unit}</option>";
               }
               ?>

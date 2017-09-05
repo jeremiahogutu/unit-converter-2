@@ -88,6 +88,24 @@ function convert_area ($value, $from_unit, $to_unit) {
 }
 
 // Volume
+function convert_to_liters ($value, $from_unit) {
+    $from_unit = str_replace('square_','',$from_unit);
+    if (array_key_exists($from_unit, VOLUME_TO_LITER)){
+        return $value * VOLUME_TO_LITER[$from_unit];
+    } else {
+        return "Unsupported unit.";
+    }
+}
+function convert_from_liters ($value, $to_unit) {
+    $to_unit = str_replace('square_','',$to_unit);
+    if (array_key_exists($to_unit, VOLUME_TO_LITER)){
+        return $value / VOLUME_TO_LITER[$to_unit];
+    } else {
+        return "Unsupported unit.";
+    }
+}
 function convert_volume ($value, $from_unit, $to_unit) {
-
+    $liter_value = convert_to_liters($value, $from_unit);
+    $new_value = convert_from_liters($liter_value, $to_unit);
+    return $new_value;
 }

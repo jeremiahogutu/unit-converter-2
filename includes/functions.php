@@ -10,7 +10,8 @@ const LENGTH_TO_METER = array(
     "meters" => 1,
     "kilometers" => 1000,
     "acres" => 63.614907249795,
-    "hectares" => 100
+    "hectares" => 100,
+    "nautical_miles" => 1852
 );
 
 
@@ -155,6 +156,8 @@ function convert_mass ($value, $from_unit, $to_unit) {
 
 // Speed
 function convert_speed ($value, $from_unit, $to_unit) {
+    if ($from_unit == 'knots') {$from_unit = 'nautical_miles_per_hour';}
+    if ($to_unit == 'knots') {$to_unit = 'nautical_miles_per_hour';}
     list($from_dist, $from_time) = explode('_per_', $from_unit );
     list($to_dist, $to_time) = explode('_per_', $to_unit );
 

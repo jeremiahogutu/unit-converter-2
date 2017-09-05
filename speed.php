@@ -18,8 +18,8 @@
             'Feet per second',
             'Miles per hour',
             'Meters per second',
-            'Kilometers per hour'
-
+            'Kilometers per hour',
+            'Knots'
     );
 
 ?>

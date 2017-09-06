@@ -1,85 +1,120 @@
 /* general */
 
-html { 
-  height: 100%; width: 100%;
-  margin: 0; padding: 0;
-}
+/*html { */
+  /*height: 100%; width: 100%;*/
+  /*margin: 0; padding: 0;*/
+/*}*/
 
-body {
-  height: 100%; width: 100%;
-  margin: 0; padding: 0;
-  background: #EEE;
-  font: 18px Georgia,Times,"Times New Roman",serif;
-}
+/*body {*/
+  /*height: 100%; width: 100%;*/
+  /*margin: 0; padding: 0;*/
+  /*background: #EEE;*/
+  /*font: 18px Georgia,Times,"Times New Roman",serif;*/
+/*}*/
 
-#main-content {
-  width: 500px;
-  margin: 0 auto; padding: 20px 0;
-}
+/*#main-content {*/
+  /*width: 500px;*/
+  /*margin: 0 auto; padding: 20px 0;*/
+/*}*/
 
-h1 {
-  font: 30px Arial,"Helvetica Neue",Helvetica,sans-serif;
-}
-
-
-/* menu page */
-
-ul#measurement-types {
-  list-style-type: none;
-  margin: 1em 0; padding: 0;
-}
-
-ul#measurement-types li {
-  height: auto;
-  margin: 0 0 10px 0; padding: 0;
-}
-
-ul#measurement-types li a {
-  text-decoration: none;
-  color: black;
-  display: block;
-  background: white;
-  padding: 16px 24px;
-  width: 180px;
-  border: 1px solid black;
-}
-
-ul#measurement-types li a:hover {
-  color: white;
-  background: #FDB912;
-}
+/*h1 {*/
+  /*font: 30px Arial,"Helvetica Neue",Helvetica,sans-serif;*/
+/*}*/
 
 
-/* conversion forms */
+/*!* menu page *!*/
+
+/*ul#measurement-types {*/
+  /*list-style-type: none;*/
+  /*margin: 1em 0; padding: 0;*/
+/*}*/
+
+/*ul#measurement-types li {*/
+  /*height: auto;*/
+  /*margin: 0 0 10px 0; padding: 0;*/
+/*}*/
+
+/*ul#measurement-types li a {*/
+  /*text-decoration: none;*/
+  /*color: black;*/
+  /*display: block;*/
+  /*background: white;*/
+  /*padding: 16px 24px;*/
+  /*width: 180px;*/
+  /*border: 1px solid black;*/
+/*}*/
+
+/*ul#measurement-types li a:hover {*/
+  /*color: white;*/
+  /*background: #FDB912;*/
+/*}*/
+
+
+/*!* conversion forms *!*/
 
 form label {
   display: inline-block;
-  width: 45px;  
+  width: 45px;
 }
 
 form input[type="text"] {
-  width: 80px;
-  font-size: 16px;
-  line-height: 16px;
+  /*width: 80px;*/
+    /*width: 100%;*/
+    padding: 6px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 form select {
-  margin: 1em 0;
-  font-size: 14px;
+  /*margin: 1em 10px;*/
+    /*margin-left: 0.7em;*/
+    font-size: 14px;
+    margin-top: 4.3em;
+    /*margin-right: 1.85em;*/
+    width: 100%;
+    font-family: 'Baloo Tammudu', cursive;
+
 }
 
-form input[type="submit"] {
-  font-size: 1em;
-  text-decoration: none;
-  color: black;
-  display: block;
-  background: white;
-  margin: 2em 0 2em 25px;
-  padding: 6px 12px;
-  border: 1px solid black;
+/*form input[type="submit"] {*/
+  /*font-size: 1em;*/
+  /*text-decoration: none;*/
+  /*color: black;*/
+  /*display: block;*/
+  /*background: white;*/
+  /*margin: 2em 0 2em 25px;*/
+  /*padding: 6px 12px;*/
+  /*border: 1px solid black;*/
+/*}*/
+
+/*form input[type="submit"]:hover {*/
+  /*color: white;*/
+  /*background: #FDB912;*/
+/*}*/
+
+body {
+    background: #607d8b;
+}
+h1 {
+    margin: 20px auto;
+    color: #fff;
 }
 
-form input[type="submit"]:hover {
-  color: white;
-  background: #FDB912;
+label {
+    font-size: 2em;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+@media only screen and (max-width: 767px) {
+    form select {
+        margin-top: 0;
+        font-family: 'Maven Pro', sans-serif;
+    }
+
+    label {
+        font-size: 2em;
+        font-family: 'Maven Pro', sans-serif;
+    }
 }

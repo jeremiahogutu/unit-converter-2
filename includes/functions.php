@@ -166,3 +166,46 @@ function convert_speed ($value, $from_unit, $to_unit) {
     if ($to_time == 'hour') {$value *= 3600;}
     return $value;
 }
+
+// Temperature
+function convert_to_celsius($value, $from_unit) {
+    switch ($from_unit){
+        case 'celsius':
+            return $value;
+            break;
+
+        case 'fahrenheit':
+            return ($value - 32) / 1.8;
+            break;
+
+        case 'kelvin':
+            return $value - 273.15;
+            break;
+        default:
+            return 'unsupported unit';
+    }
+}
+
+function convert_from_celsius($value, $to_unit) {
+    switch ($to_unit){
+        case 'celsius':
+            return $value;
+            break;
+
+        case 'fahrenheit':
+            return ($value * 1.8) + 32;
+            break;
+
+        case 'kelvin':
+            return $value + 273.15;
+            break;
+        default:
+            return 'unsupported unit';
+    }
+}
+
+function convert_temperature ($value, $from_unit, $to_unit) {
+    $celsius_value = convert_to_celsius($value, $from_unit);
+    $new_value = convert_from_celsius($celsius_value, $to_unit);
+    return $new_value;
+}
